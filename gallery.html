@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PEPPER SOUP BOWLS AND MORE Gallery</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    h1, h2 {
+      font-weight: 700; /* bold heading */
+    }
+    p {
+      font-weight: 400; /* normal paragraph */
+    }
+    .hidden-top {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    .drop {
+      transition: transform 3s ease, opacity 3s ease;
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="w-full fixed top-0 z-50 bg-[#5C3B1E] hidden-top" id="main-header">
+    <div class="flex justify-between items-center h-[80px] px-6">
+      <!-- Logo -->
+      <div>
+        <img class="w-[120px] h-[120px] cursor-pointer" 
+             src="./assets/images/logo 2.jpeg" 
+             alt="Logo">
+      </div>
+
+      <!-- Menu -->
+      <ul id="menu" class="hidden md:flex gap-5 md:flex-row absolute md:static top-[60px] left-0 w-full md:w-auto bg-[#5C3B1E] md:bg-transparent flex-col md:flex-row text-center p-4 md:p-0">
+        <li><a href="index.html#home" class="text-[#F5F5F5] font-bold text-xl hover:text-[#F4C542]">Home</a></li>
+        <li><a href="index.html#about-us" class="text-[#F5F5F5] font-bold text-xl hover:text-[#F4C542]">About Us</a></li>
+        <li><a href="./menu.html" class="text-[#F5F5F5] font-bold text-xl hover:text-[#F4C542]">Menu</a></li>
+        <li><a href="./gallery.html" class="text-[#F5F5F5] font-bold text-xl hover:text-[#F4C542]">Gallery</a></li>
+        <li><a href="https://maps.google.com/?q=123+Main+Street,+Lagos" class="text-[#F5F5F5] font-bold text-xl hover:text-[#F4C542]">Location</a></li>
+      </ul>
+
+      <!-- Hamburger -->
+      <img id="menu-bar" src="./assets/images/more (1).png" 
+           alt="menu" 
+           class="w-[40px] h-[40px] md:hidden cursor-pointer">
+    </div>
+  </header>
+
+  <div id="cart" class="hidden fixed top-[100px] md:right-6 bg-white shadow-md rounded-lg p-4 w-full max-w-md z-50">
+  <div class="flex justify-between items-center mb-2">
+    <h2 class="font-bold text-lg">Your Cart</h2>
+    <button id="close-cart" class="text-blue-600 font-bold text-lg">✖</button>
+  </div>
+  
+  <ul id="cart-items" class="mb-2"></ul>
+  <p id="cart-total" class="font-semibold">Total: $0</p>
+
+  <a id="checkout-btn" href="#" target="_blank"
+     class="mt-4 inline-block w-full text-center bg-green-600 text-white px-4 py-2 rounded-lg font-semibold">
+     Checkout with WhatsApp
+  </a>
+
+  <!-- Clear Cart -->
+  <button id="clear-cart" class="mt-2 w-full bg-red-500 text-white px-4 py-2 rounded-lg font-semibold">
+    Clear Cart List
+  </button>
+</div>
+
+
+<section id="gallery" class="pb-12 pt-[100px] px-4 md:px-12 bg-[#FFF8F0]">
+  <h2 class="text-3xl md:text-4xl font-bold text-center text-[#C8102E] mb-10">
+    Our Food Gallery
+  </h2>
+
+  <!-- Responsive Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    
+    <!-- Item 1 -->
+    <div class="relative group overflow-hidden rounded-2xl shadow-lg">
+      <img src="./assets/images/Afang soup.jpeg" 
+           alt="Jollof Rice"
+           class="w-full h-80 object-cover transform transition duration-700 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center 
+                  opacity-0 group-hover:opacity-100 transition duration-500">
+        <p class="text-white text-xl font-semibold">Efo Riro with Pounded Yam</p>
+      </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="relative group overflow-hidden rounded-2xl shadow-lg">
+      <img src="./assets/images/African food.jpeg" 
+           alt="Pap and Akara"
+           class="w-full h-80 object-cover transform transition duration-700 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center 
+                  opacity-0 group-hover:opacity-100 transition duration-500">
+        <p class="text-white text-xl font-semibold">Pepper Sauce with snail</p>
+      </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="relative group overflow-hidden rounded-2xl shadow-lg">
+      <img src="./assets/images/Authentic Nigerian Edikang Ikong Soup Recipe _ Hearty & Flavorful Nigerian Soup.jpg" 
+           alt="Goat Meat Pepper Soup"
+           class="w-full h-80 object-cover transform transition duration-700 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center 
+                  opacity-0 group-hover:opacity-100 transition duration-500">
+        <p class="text-white text-xl font-semibold">Efo Riro with eba </p>
+      </div>
+    </div>
+
+    <div class="relative group overflow-hidden rounded-2xl shadow-lg">
+      <img src="./assets/images/bee_kitchen_1 on Instagram_ After detoxing we eat Fufu with Chicken Light Soup 😂 I’m so annoyed I don’t have okro 😭 What’s everyone having for lunch_ Ps_ Happy Eid….jpeg" 
+           alt="Goat Meat Pepper Soup"
+           class="w-full h-80 object-cover transform transition duration-700 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center 
+                  opacity-0 group-hover:opacity-100 transition duration-500">
+        <p class="text-white text-xl font-semibold">Plain Pepper Soup with Chicken</p>
+      </div>
+    </div>
+
+    <div class="relative group overflow-hidden rounded-2xl shadow-lg">
+      <img src="./assets/images/dawnload 4.jpeg" 
+           alt="Goat Meat Pepper Soup"
+           class="w-full h-80 object-cover transform transition duration-700 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center 
+                  opacity-0 group-hover:opacity-100 transition duration-500">
+        <p class="text-white text-xl font-semibold">AfricaN Spinach(Ewedu)</p>
+      </div>
+    </div>
+
+    <div class="relative group overflow-hidden rounded-2xl shadow-lg">
+      <img src="./assets/images/Efo riro.jpeg" 
+           alt="Goat Meat Pepper Soup"
+           class="w-full h-80 object-cover transform transition duration-700 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center 
+                  opacity-0 group-hover:opacity-100 transition duration-500">
+        <p class="text-white text-xl font-semibold">Bitterleaf Soup</p>
+      </div>
+    </div>
+
+    <div class="relative group overflow-hidden rounded-2xl shadow-lg">
+      <img src="./assets/images/download.jpeg" 
+           alt="Goat Meat Pepper Soup"
+           class="w-full h-80 object-cover transform transition duration-700 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center 
+                  opacity-0 group-hover:opacity-100 transition duration-500">
+        <p class="text-white text-xl font-semibold">Egusi with Pounded Yam</p>
+      </div>
+    </div>
+
+    <div class="relative group overflow-hidden rounded-2xl shadow-lg">
+      <img src="./assets/images/Pepper soup.jpeg" 
+           alt="Goat Meat Pepper Soup"
+           class="w-full h-80 object-cover transform transition duration-700 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center 
+                  opacity-0 group-hover:opacity-100 transition duration-500">
+        <p class="text-white text-xl font-semibold">Goat Meat Pepper Soup</p>
+      </div>
+    </div>
+
+    <div class="relative group overflow-hidden rounded-2xl shadow-lg">
+      <img src="./assets/images/the Nigerian okpa.jpeg" 
+           alt="Goat Meat Pepper Soup"
+           class="w-full h-80 object-cover transform transition duration-700 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center 
+                  opacity-0 group-hover:opacity-100 transition duration-500">
+        <p class="text-white text-xl font-semibold">Moi Moi</p>
+      </div>
+    </div>
+
+    
+</section>
+
+
+
+
+
+
+<footer class="w-full bg-[#5C3B1E] text-white py-10 px-6">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
+    
+    <!-- Contact Info -->
+    <div>
+      <h2 class="text-xl md:text-2xl font-bold mb-4 text-[#F4C542]">Contact</h2>
+      <p class="mb-2">
+        Phone: 
+        <a href="tel:#" class="text-[#F4C542] hover:underline">
+          +234 000 000 000 00
+        </a>
+      </p>
+      <p>
+        Email: 
+        <a href="mailto:#" class="text-[#F4C542] hover:underline">
+          your mail@gmail.com
+        </a>
+      </p>
+    </div>
+
+    <div class="text-center">
+  <h2 class="text-xl md:text-2xl font-bold mb-4 text-[#F4C542]">Follow Us</h2>
+  <div class="flex justify-center gap-6">
+    <a href="https:#" target="_blank">
+      <img src="./assets/images/instagram.png" 
+           class="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300 hover:-translate-y-2 cursor-pointer" 
+           alt="Instagram">
+    </a>
+    <a href="https:/#" target="_blank">
+      <img src="./assets/images/facebook.png" 
+           class="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300 hover:-translate-y-2 cursor-pointer" 
+           alt="Facebook">
+    </a>
+    <a href="http://wa.me/#" target="_blank">
+      <img src="./assets/images/whatsapp.png" 
+           class="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300 hover:-translate-y-2 cursor-pointer" 
+           alt="WhatsApp">
+    </a>
+  </div>
+</div>
+
+
+    <!-- Quick Links -->
+    <div>
+      <h2 class="text-xl md:text-2xl font-bold mb-4 text-[#F4C542]">Quick Links</h2>
+      <ul class="space-y-2">
+        <li><a href="index.html#faq" class="hover:text-[#F4C542] transition">FAQ</a></li>
+        <li><a href="index.html#contact" class="hover:text-[#F4C542] transition">Contact</a></li>
+        <li><a href="index.html#home" class="hover:text-[#F4C542] transition">Home</a></li>
+      <li><a href="index.html#about-us" class="hover:text-[#F4C542] transition">About Us</a></li>
+      <li><a href="./menu.html" class="hover:text-[#F4C542] transition">Menu</a></li>
+      <li><a href="./gallery.html" class="hover:text-[#F4C542] transition">Gallery</a></li>
+      <li><a href="index.html#testimonials" class="hover:text-[#F4C542] transition">Testimonials</a></li>
+      <li><a href="https://maps.google.com/?q=123+Main+Street,+Lagos" class="hover:text-[#F4C542] transition">Location</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bottom Logo + Copyright -->
+  <div class="mt-10 text-center">
+    <img 
+      class="w-28 h-28 md:w-40 md:h-40 mx-auto mb-4" 
+      src="./assets/images/logo_2-removebg-preview.png" 
+      alt="Logo"
+    >
+    <p class="text-sm md:text-base">&copy; 2025 business name. All rights reserved.</p>
+  </div>
+</footer>
+<script src="./script.js"></script>
+</body>
+</html>

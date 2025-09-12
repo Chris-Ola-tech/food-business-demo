@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PEPPER SOUP BOWLS AND MORE Menu</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    h1, h2 {
+      font-weight: 700; /* bold heading */
+    }
+    p {
+      font-weight: 400; /* normal paragraph */
+    }
+    .hidden-top {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    .drop {
+      transition: transform 3s ease, opacity 3s ease;
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="w-full fixed top-0 z-50 bg-[#5C3B1E] hidden-top" id="main-header">
+    <div class="flex justify-between items-center h-[80px] px-6">
+      <!-- Logo -->
+      <div>
+        <img class="w-[120px] h-[120px] cursor-pointer" 
+             src="./assets/images/logo_2-removebg-preview.png" 
+             alt="Logo">
+      </div>
+
+      <!-- Menu -->
+      <ul id="menu" class="hidden md:flex gap-5 md:flex-row absolute md:static top-[60px] left-0 w-full md:w-auto bg-[#5C3B1E] md:bg-transparent flex-col md:flex-row text-center p-4 md:p-0">
+        <li><a href="index.html#home" class="text-[#F5F5F5] font-bold text-xl hover:text-[#F4C542]">Home</a></li>
+        <li><a href="index.html#about-us" class="text-[#F5F5F5] font-bold text-xl hover:text-[#F4C542]">About Us</a></li>
+        <li><a href="#menu-food" class="text-[#F5F5F5] font-bold text-xl hover:text-[#F4C542]">Menu</a></li>
+        <li><a href="./gallery.html" class="text-[#F5F5F5] font-bold text-xl hover:text-[#F4C542]">Gallery</a></li>
+         <li><a href="https://maps.google.com/?q=123+Main+Street,+Lagos" class="text-[#F5F5F5] font-bold text-xl hover:text-[#F4C542]">Location</a></li>
+      </ul>
+
+      <!-- Hamburger -->
+      <img id="menu-bar" src="./assets/images/more (1).png" 
+           alt="menu" 
+           class="w-[40px] h-[40px] md:hidden cursor-pointer">
+    </div>
+  </header>
+
+
+
+
+
+<div class="mt-8 px-6 pt-[100px]" id="menu-food">
+  <h1 class="text-center text-3xl md:text-4xl text-[#5C3B1E] font-bold pt-8 pb-32">Explore Our Menu</h1>
+</div>
+
+
+
+
+  <!-- CART -->
+  <!-- Cart -->
+<div id="cart" class="hidden fixed top-[100px] md:right-6 bg-white shadow-md rounded-lg p-4 w-full max-w-md z-50">
+  <div class="flex justify-between items-center mb-2">
+    <h2 class="font-bold text-lg">Your Cart</h2>
+    <button id="close-cart" class="text-blue-600 font-bold text-lg">✖</button>
+  </div>
+  
+  <ul id="cart-items" class="mb-2"></ul>
+  <p id="cart-total" class="font-semibold">Total: $0</p>
+
+  <a id="checkout-btn" href="#" target="_blank"
+     class="mt-4 inline-block w-full text-center bg-green-600 text-white px-4 py-2 rounded-lg font-semibold">
+     Checkout with WhatsApp
+  </a>
+
+  <!-- Clear Cart -->
+  <button id="clear-cart" class="mt-2 w-full bg-red-500 text-white px-4 py-2 rounded-lg font-semibold">
+    Clear Cart List
+  </button>
+</div>
+
+
+<main class="w-full flex items-center justify-center h-auto px-2 mb-8">
+  <div id="menu" 
+       class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+
+    <!-- Example Meal Card -->
+    <div class="bg-[#5C3B1E] shadow-md rounded-xl p-4 h-[400px] flex flex-col items-center">
+      <img src="./assets/images/Nigerian breakfast.jpg" 
+           class="w-full h-48 object-cover rounded-md hover:scale-105 transition">
+      <p class="text-white text-sm my-4 text-center">
+        PAP AND AKARA <br>
+        10-15 minutes <br>
+        <span class="price">$50</span>
+      </p>
+      <button class="order-btn bg-[#C8102E] px-6 py-3 rounded-lg text-white font-semibold hover:bg-[#F4C542] transition"
+              data-name="PAP AND AKARA" data-price="50">
+        Add to Cart
+      </button>
+    </div>
+
+    <!-- Copy this card for the rest of the meals -->
+<!-- Project 2 -->
+    <div class="snap-start min-w-full sm:min-w-[50%] lg:min-w-[33%] bg-[#5C3B1E] shadow-md rounded-xl p-4 h-[400px] flex flex-col items-center">
+      <img src="./assets/images/Lunch _ Nigerian Yam & Beef Peppersoup Recipe 🥣.jpg" 
+           class="w-full h-48 object-cover rounded-md hover:scale-105 transition">
+      <p class="text-white text-sm my-4 text-center">
+        Chicken Pepper Soup <br>
+        15-35 minutes <br>
+       <span> $50</span>.
+      </p>
+      <button class="order-btn bg-[#C8102E] px-6 py-3 rounded-lg text-white font-semibold hover:bg-[#F4C542] transition"
+              data-name="Chicken Pepper Soup" data-price="50">
+        Add to Cart
+      </button>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="snap-start min-w-full sm:min-w-[50%] lg:min-w-[33%] bg-[#5C3B1E] shadow-md rounded-xl p-4 h-[400px] flex flex-col items-center">
+      <img src="./assets/images/Jollof rice.jpg" 
+           class="w-full h-48 object-cover rounded-md hover:scale-105 transition">
+      <p class="text-white text-sm my-4 text-center">
+        Jollof Rice And Chicken <br>
+        30-45 minutes <br>
+       <span> $50</span>.
+      </p>
+      <button class="order-btn bg-[#C8102E] px-6 py-3 rounded-lg text-white font-semibold hover:bg-[#F4C542] transition"
+              data-name="Jollof Rice And Chicken" data-price="50">
+        Add to Cart
+      </button>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="snap-start min-w-full sm:min-w-[50%] lg:min-w-[33%] bg-[#5C3B1E] shadow-md rounded-xl p-4 h-[400px] flex flex-col items-center">
+      <img src="./assets/images/How to Prepare a Typical Nigerian Pepper Soup.jpg" 
+           class="w-full h-48 object-cover rounded-md hover:scale-105 transition">
+      <p class="text-white text-sm my-4 text-center">
+        Assorted Meat Pepper Soup <br>
+        30-45 minutes <br>
+       <span> $30</span>.
+      </p>
+      <button class="order-btn bg-[#C8102E] px-6 py-3 rounded-lg text-white font-semibold hover:bg-[#F4C542] transition"
+              data-name="Assorted Meat Pepper Soup" data-price="30">
+        Add to Cart
+      </button>
+    </div>
+
+    <!-- Project 5 -->
+    <div class="snap-start min-w-full sm:min-w-[50%] lg:min-w-[33%] bg-[#5C3B1E] shadow-md rounded-xl p-4 h-[400px] flex flex-col items-center">
+      <img src="./assets/images/Abula ❤️.jpg" 
+           class="w-full h-48 object-cover rounded-md hover:scale-105 transition">
+      <p class="text-white text-sm my-4 text-center">
+        Abula <br>
+        30-40 minutes <br>
+       <span> $40</span>.
+      </p>
+      <button class="order-btn bg-[#C8102E] px-6 py-3 rounded-lg text-white font-semibold hover:bg-[#F4C542] transition"
+              data-name="Abula " data-price="40">
+        Add to Cart
+      </button>
+    </div>
+
+
+    <!-- Project 6 -->
+    <div class="snap-start min-w-full sm:min-w-[50%] lg:min-w-[33%] bg-[#5C3B1E] shadow-md rounded-xl p-4 h-[400px] flex flex-col items-center">
+      <img src="./assets/images/download (1).jpg" 
+           class="w-full h-48 object-cover rounded-md hover:scale-105 transition">
+      <p class="text-white text-sm my-4 text-center">
+        Goat Meat Pepper Soup<br>
+        25-30 minutes <br>
+       <span> $80</span>.
+      </p>
+      <button class="order-btn bg-[#C8102E] px-6 py-3 rounded-lg text-white font-semibold hover:bg-[#F4C542] transition"
+              data-name="Goat Meat Pepper Soup" data-price="80">
+        Add to Cart
+      </button>
+    </div>
+
+
+    <!-- Project 7 -->
+    <div class="snap-start min-w-full sm:min-w-[50%] lg:min-w-[33%] bg-[#5C3B1E] shadow-md rounded-xl p-4 h-[400px] flex flex-col items-center">
+      <img src="./assets/images/download (2).jpg" 
+           class="w-full h-48 object-cover rounded-md hover:scale-105 transition">
+      <p class="text-white text-sm my-4 text-center">
+        Offal Pepper Soup <br>
+        30-40 minutes <br>
+       <span> $45</span>.
+      </p>
+     <button class="order-btn bg-[#C8102E] px-6 py-3 rounded-lg text-white font-semibold hover:bg-[#F4C542] transition"
+              data-name="Offal Pepper Soup" data-price="45">
+        Add to Cart
+      </button>
+    </div>
+
+
+    <!-- Project 8-->
+    <div class="snap-start min-w-full sm:min-w-[50%] lg:min-w-[33%] bg-[#5C3B1E] shadow-md rounded-xl p-4 h-[400px] flex flex-col items-center">
+      <img src="./assets/images/download (3).jpg" 
+           class="w-full h-48 object-cover rounded-md hover:scale-105 transition">
+      <p class="text-white text-sm my-4 text-center">
+        Fish Pepper Soup <br>
+        30-40 minutes <br>
+       <span> $50</span>.
+      </p>
+      <button class="order-btn bg-[#C8102E] px-6 py-3 rounded-lg text-white font-semibold hover:bg-[#F4C542] transition"
+              data-name="Fish Pepper Soup" data-price="50">
+        Add to Cart
+      </button>
+    </div>
+
+
+    <!-- Project 9 -->
+    <div class="snap-start min-w-full sm:min-w-[50%] lg:min-w-[33%] bg-[#5C3B1E] shadow-md rounded-xl p-4 h-[400px] flex flex-col items-center">
+      <img src="./assets/images/Authentic Nigerian Edikang Ikong Soup Recipe _ Hearty & Flavorful Nigerian Soup.jpg" 
+           class="w-full h-48 object-cover rounded-md hover:scale-105 transition">
+      <p class="text-white text-sm my-4 text-center">
+        Efo Riro <br>
+        30-40 minutes <br>
+       <span> $50</span>.
+      </p>
+      <button class="order-btn bg-[#C8102E] px-6 py-3 rounded-lg text-white font-semibold hover:bg-[#F4C542] transition"
+              data-name="Efo Riro" data-price="50">
+        Add to Cart
+      </button>
+    </div>
+
+
+    <!-- Project 10 -->
+    <div class="snap-start min-w-full sm:min-w-[50%] lg:min-w-[33%] bg-[#5C3B1E] shadow-md rounded-xl p-4 h-[400px] flex flex-col items-center">
+      <img src="./assets/images/Ogbono soup.jpeg" 
+           class="w-full h-48 object-cover rounded-md hover:scale-105 transition">
+      <p class="text-white text-sm my-4 text-center">
+        Ogbono Soup <br>
+        20-30 minutes <br>
+       <span> $60</span>.
+      </p>
+     <button class="order-btn bg-[#C8102E] px-6 py-3 rounded-lg text-white font-semibold hover:bg-[#F4C542] transition"
+              data-name="Ogbono Soup " data-price="60">
+        Add to Cart
+      </button>
+    </div>
+
+
+    <!-- Project 11 -->
+    <div class="snap-start min-w-full sm:min-w-[50%] lg:min-w-[33%] bg-[#5C3B1E] shadow-md rounded-xl p-4 h-[400px] flex flex-col items-center">
+      <img src="./assets/images/Instagram_ @akitchenfaraway.jpg" 
+           class="w-full h-48 object-cover rounded-md hover:scale-105 transition">
+      <p class="text-white text-sm my-4 text-center">
+        Beans And Plantain<br>
+        25-35 minutes <br>
+       <span> $80</span>.
+      </p>
+      <button class="order-btn bg-[#C8102E] px-6 py-3 rounded-lg text-white font-semibold hover:bg-[#F4C542] transition"
+              data-name="Beans And Plantain" data-price="80">
+        Add to Cart
+      </button>
+    </div>
+
+
+    <!-- Project 12 -->
+    <div class="snap-start min-w-full sm:min-w-[50%] lg:min-w-[33%] bg-[#5C3B1E] shadow-md rounded-xl p-4 h-[400px] flex flex-col items-center">
+      <img src="./assets/images/Beef recipe.jpg" 
+           class="w-full h-48 object-cover rounded-md hover:scale-105 transition">
+      <p class="text-white text-sm my-4 text-center">
+        Fied Spicy Meat <br>
+        30-40 minutes <br>
+       <span> $45</span>.
+      </p>
+      <button class="order-btn bg-[#C8102E] px-6 py-3 rounded-lg text-white font-semibold hover:bg-[#F4C542] transition"
+              data-name="Fied Spicy Meat" data-price="45">
+        Add to Cart
+      </button>
+    </div>
+
+  </div>
+</main>
+
+
+ <footer class="w-full bg-[#5C3B1E] text-white py-10 px-6">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
+    
+    <!-- Contact Info -->
+    <div>
+      <h2 class="text-xl md:text-2xl font-bold mb-4 text-[#F4C542]">Contact</h2>
+      <p class="mb-2">
+        Phone: 
+        <a href="tel:#" class="text-[#F4C542] hover:underline">
+          +234 000 000 000 00
+        </a>
+      </p>
+      <p>
+        Email: 
+        <a href="mailto:#" class="text-[#F4C542] hover:underline">
+          your mail@gmail.com
+        </a>
+      </p>
+    </div>
+
+    <div class="text-center">
+  <h2 class="text-xl md:text-2xl font-bold mb-4 text-[#F4C542]">Follow Us</h2>
+  <div class="flex justify-center gap-6">
+    <a href="https:#" target="_blank">
+      <img src="./assets/images/instagram.png" 
+           class="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300 hover:-translate-y-2 cursor-pointer" 
+           alt="Instagram">
+    </a>
+    <a href="https:/#" target="_blank">
+      <img src="./assets/images/facebook.png" 
+           class="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300 hover:-translate-y-2 cursor-pointer" 
+           alt="Facebook">
+    </a>
+    <a href="http://wa.me/#" target="_blank">
+      <img src="./assets/images/whatsapp.png" 
+           class="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300 hover:-translate-y-2 cursor-pointer" 
+           alt="WhatsApp">
+    </a>
+  </div>
+</div>
+
+
+    <!-- Quick Links -->
+    <div>
+      <h2 class="text-xl md:text-2xl font-bold mb-4 text-[#F4C542]">Quick Links</h2>
+      <ul class="space-y-2">
+        <li><a href="index.html#faq" class="hover:text-[#F4C542] transition">FAQ</a></li>
+        <li><a href="index.html#contact" class="hover:text-[#F4C542] transition">Contact</a></li>
+        <li><a href="index.html#home" class="hover:text-[#F4C542] transition">Home</a></li>
+      <li><a href="index.html#about-us" class="hover:text-[#F4C542] transition">About Us</a></li>
+      <li><a href="./menu.html" class="hover:text-[#F4C542] transition">Menu</a></li>
+      <li><a href="./gallery.html" class="hover:text-[#F4C542] transition">Gallery</a></li>
+      <li><a href="index.html#testimonials" class="hover:text-[#F4C542] transition">Testimonials</a></li>
+      <li><a href="https://maps.google.com/?q=123+Main+Street,+Lagos" class="hover:text-[#F4C542] transition">Location</a></li>
+    </div>
+  </div>
+
+  <!-- Bottom Logo + Copyright -->
+  <div class="mt-10 text-center">
+    <img 
+      class="w-28 h-28 md:w-40 md:h-40 mx-auto mb-4" 
+      src="./assets/images/logo_2-removebg-preview.png" 
+      alt="Logo"
+    >
+    <p class="text-sm md:text-base">&copy; 2025 business name. All rights reserved.</p>
+  </div>
+</footer>
+<script src="./script.js"></script>
+</body>
+</html>
