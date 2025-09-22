@@ -136,32 +136,59 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-const testimonialList = document.getElementById("testimonial-list");
-const dots = document.querySelectorAll(".dot");
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('testimonial-container');
+  const testimonialList = document.getElementById('testimonial-list');
+  const dots = Array.from(document.querySelectorAll('.dot'));
+  if (!container || !testimonialList || dots.length === 0) return;
 
-let currentIndex = 0;
+  // compute slide width (recompute on resize)
+  let slideWidth = container.clientWidth;
+  const updateSlideWidth = () => {
+    // use container width (visible viewport width for one slide)
+    slideWidth = container.clientWidth || (testimonialList.children[0] && testimonialList.children[0].getBoundingClientRect().width) || 0;
+  };
+  window.addEventListener('resize', updateSlideWidth);
+  updateSlideWidth();
 
-// Function to update slide + active dot
-function showSlide(index) {
-  currentIndex = index;
-  testimonialList.style.transform = `translateX(-${index * 100}%)`;
-  
-  dots.forEach((dot, i) => {
-    dot.classList.toggle("bg-gray-800", i === index);
-    dot.classList.toggle("bg-gray-400", i !== index);
+  // set active dot UI
+  function setActiveDot(index) {
+    dots.forEach((dot, i) => {
+      if (i === index) {
+        dot.classList.remove('bg-gray-400');
+        dot.classList.add('bg-[#C8102E]');
+        dot.setAttribute('aria-current', 'true');
+      } else {
+        dot.classList.remove('bg-[#C8102E]');
+        dot.classList.add('bg-gray-400');
+        dot.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  // click on dots -> scroll to slide
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      updateSlideWidth();
+      container.scrollTo({ left: slideWidth * index, behavior: 'smooth' });
+      setActiveDot(index);
+    });
   });
-}
 
-// Add click events to dots
-dots.forEach((dot, i) => {
-  dot.addEventListener("click", () => showSlide(i));
+  // on manual scroll, update active dot (debounced)
+  let scrollTimeout = null;
+  container.addEventListener('scroll', () => {
+    if (scrollTimeout) clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      updateSlideWidth();
+      const index = Math.round(container.scrollLeft / (slideWidth || 1));
+      setActiveDot(Math.min(Math.max(index, 0), dots.length - 1));
+    }, 50);
+  });
+
+  // initialize
+  setActiveDot(0);
 });
-
-// Show first slide by default
-showSlide(0);
-
-
-
 
   document.getElementById("sendBtn").addEventListener("click", function (e) {
     e.preventDefault(); // Prevent empty submission
