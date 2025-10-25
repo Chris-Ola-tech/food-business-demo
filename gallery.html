@@ -7,258 +7,587 @@
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Custom CSS -->
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-    }
-    h1, h2 {
-      font-weight: 700; /* bold heading */
-    }
-    p {
-      font-weight: 400; /* normal paragraph */
-    }
-    .hidden-top {
-      transform: translateY(-100%);
-      opacity: 0;
-    }
-    .drop {
-      transition: transform 3s ease, opacity 3s ease;
-      transform: translateY(0);
-      opacity: 1;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<link rel="icon" type="image/png" href="./assets/images/rice.png">
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="w-full fixed top-0 z-50 bg-[#5C3B1E] hidden-top" id="main-header">
-    <div class="flex justify-between items-center h-[80px] px-6">
-      <!-- Logo -->
-      <div>
-        <img class="w-[120px] h-[120px] cursor-pointer" 
-             src="./assets/images/logo_2-removebg-preview.png" 
-             alt="Logo">
+  <!-- Header -->
+  <header class="w-full fixed top-0 z-50 bg-gradient-to-r from-[#5C3B1E] to-[#6d4726] shadow-lg header-hidden" id="main-header">
+    <div class="container mx-auto px-4 lg:px-6">
+      <div class="flex justify-between items-center h-20">
+        
+        <!-- Logo -->
+        <div class="flex items-center">
+          <div class="bg-white rounded-full p-2 shadow-md smooth-transition hover:shadow-xl hover:scale-105">
+            <img class="w-16 h-16 cursor-pointer object-contain" 
+                 src="./assets/images/food logo.png" 
+                 alt="Food Delivery Logo">
+          </div>
+          <span class="ml-3 text-white font-bold text-xl hidden sm:block">FoodDash</span>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center gap-8">
+          <a href="./index.html" class="nav-link text-white font-semibold text-base hover:text-[#F4C542]">Home</a>
+          <a href="#about-us" class="nav-link text-white font-semibold text-base hover:text-[#F4C542]">About Us</a>
+          <a href="./menu.html" class="nav-link text-white font-semibold text-base hover:text-[#F4C542]">Menu</a>
+          <a href="./gallery.html" class="nav-link text-white font-semibold text-base hover:text-[#F4C542]">Gallery</a>
+          <a href="https://maps.google.com/?q=123+Main+Street,+Lagos" class="nav-link text-white font-semibold text-base hover:text-[#F4C542]">Location</a>
+        </nav>
+
+        <!-- Cart Button & Mobile Menu Toggle -->
+        <div class="flex items-center gap-4">
+          <!-- Cart Button -->
+          <button id="cart-btn" class="relative bg-[#F4C542] hover:bg-[#e6b830] text-[#5C3B1E] px-4 py-2 rounded-full font-semibold smooth-transition hover:shadow-lg flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            <span class="hidden sm:inline">Cart</span>
+            <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center shadow-md">0</span>
+          </button>
+
+          <!-- Mobile Menu Button -->
+          <button id="menu-bar" class="lg:hidden text-white smooth-transition hover:text-[#F4C542]">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
       </div>
-
-      <!-- Menu -->
-      <ul id="menu" class="hidden md:flex gap-5 md:flex-row absolute md:static top-[60px] left-0 w-full md:w-auto bg-[#5C3B1E] md:bg-transparent flex-col md:flex-row text-center p-4 md:p-0">
-        <li><a href="index.html#home" class="text-[#F5F5F5] font-bold text-xl hover:text-[#F4C542]">Home</a></li>
-        <li><a href="index.html#about-us" class="text-[#F5F5F5] font-bold text-xl hover:text-[#F4C542]">About Us</a></li>
-        <li><a href="./menu.html" class="text-[#F5F5F5] font-bold text-xl hover:text-[#F4C542]">Menu</a></li>
-        <li><a href="./gallery.html" class="text-[#F5F5F5] font-bold text-xl hover:text-[#F4C542]">Gallery</a></li>
-        <li><a href="https://maps.google.com/?q=123+Main+Street,+Lagos" class="text-[#F5F5F5] font-bold text-xl hover:text-[#F4C542]">Location</a></li>
-      </ul>
-
-      <!-- Hamburger -->
-      <img id="menu-bar" src="./assets/images/more (1).png" 
-           alt="menu" 
-           class="w-[40px] h-[40px] md:hidden cursor-pointer">
     </div>
   </header>
 
-  <div id="cart" class="hidden fixed top-[100px] md:right-6 bg-white shadow-md rounded-lg p-4 w-full max-w-md z-50">
-  <div class="flex justify-between items-center mb-2">
-    <h2 class="font-bold text-lg">Your Cart</h2>
-    <button id="close-cart" class="text-blue-600 font-bold text-lg">✖</button>
-  </div>
-  
-  <ul id="cart-items" class="mb-2"></ul>
-  <p id="cart-total" class="font-semibold">Total: $0</p>
+  <!-- Mobile Menu Backdrop -->
+  <div id="menu-backdrop" class="fixed inset-0 z-40 hidden backdrop lg:hidden"></div>
 
-  <a id="checkout-btn" href="#" target="_blank"
-     class="mt-4 inline-block w-full text-center bg-green-600 text-white px-4 py-2 rounded-lg font-semibold">
-     Checkout with WhatsApp
-  </a>
-
-  <!-- Clear Cart -->
-  <button id="clear-cart" class="mt-2 w-full bg-red-500 text-white px-4 py-2 rounded-lg font-semibold">
-    Clear Cart List
-  </button>
-</div>
-
-
-<section id="gallery" class="pb-12 pt-[100px] px-4 md:px-12 bg-[#FFF8F0]">
-  <h2 class="text-3xl md:text-4xl font-bold text-center text-[#C8102E] mb-10">
-    Our Food Gallery
-  </h2>
-
-  <!-- Responsive Grid -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-    
-    <!-- Item 1 -->
-    <div class="relative group overflow-hidden rounded-2xl shadow-lg">
-      <img src="./assets/images/Afang soup.jpeg" 
-           alt="Jollof Rice"
-           class="w-full h-80 object-cover transform transition duration-700 group-hover:scale-110">
-      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center 
-                  opacity-0 group-hover:opacity-100 transition duration-500">
-        <p class="text-white text-xl font-semibold">Efo Riro with Pounded Yam</p>
+  <!-- Mobile Menu -->
+  <nav id="mobile-menu" class="fixed top-0 left-0 h-full w-72 bg-gradient-to-b from-[#5C3B1E] to-[#4a2f18] z-50 transform -translate-x-full smooth-transition lg:hidden shadow-2xl">
+    <div class="flex flex-col h-full">
+      <!-- Menu Header -->
+      <div class="flex justify-between items-center p-6 border-b border-white/10">
+        <h3 class="text-white font-bold text-xl">Menu</h3>
+        <button id="close-menu" class="text-white hover:text-[#F4C542] smooth-transition">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
       </div>
-    </div>
 
-    <!-- Item 2 -->
-    <div class="relative group overflow-hidden rounded-2xl shadow-lg">
-      <img src="./assets/images/African food.jpeg" 
-           alt="Pap and Akara"
-           class="w-full h-80 object-cover transform transition duration-700 group-hover:scale-110">
-      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center 
-                  opacity-0 group-hover:opacity-100 transition duration-500">
-        <p class="text-white text-xl font-semibold">Pepper Sauce with snail</p>
-      </div>
-    </div>
-
-    <!-- Item 3 -->
-    <div class="relative group overflow-hidden rounded-2xl shadow-lg">
-      <img src="./assets/images/Authentic Nigerian Edikang Ikong Soup Recipe _ Hearty & Flavorful Nigerian Soup.jpg" 
-           alt="Goat Meat Pepper Soup"
-           class="w-full h-80 object-cover transform transition duration-700 group-hover:scale-110">
-      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center 
-                  opacity-0 group-hover:opacity-100 transition duration-500">
-        <p class="text-white text-xl font-semibold">Efo Riro with eba </p>
-      </div>
-    </div>
-
-    <div class="relative group overflow-hidden rounded-2xl shadow-lg">
-      <img src="./assets/images/bee_kitchen_1 on Instagram_ After detoxing we eat Fufu with Chicken Light Soup 😂 I’m so annoyed I don’t have okro 😭 What’s everyone having for lunch_ Ps_ Happy Eid….jpeg" 
-           alt="Goat Meat Pepper Soup"
-           class="w-full h-80 object-cover transform transition duration-700 group-hover:scale-110">
-      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center 
-                  opacity-0 group-hover:opacity-100 transition duration-500">
-        <p class="text-white text-xl font-semibold">Plain Pepper Soup with Chicken</p>
-      </div>
-    </div>
-
-    <div class="relative group overflow-hidden rounded-2xl shadow-lg">
-      <img src="./assets/images/dawnload 4.jpeg" 
-           alt="Goat Meat Pepper Soup"
-           class="w-full h-80 object-cover transform transition duration-700 group-hover:scale-110">
-      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center 
-                  opacity-0 group-hover:opacity-100 transition duration-500">
-        <p class="text-white text-xl font-semibold">AfricaN Spinach(Ewedu)</p>
-      </div>
-    </div>
-
-    <div class="relative group overflow-hidden rounded-2xl shadow-lg">
-      <img src="./assets/images/Efo riro.jpeg" 
-           alt="Goat Meat Pepper Soup"
-           class="w-full h-80 object-cover transform transition duration-700 group-hover:scale-110">
-      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center 
-                  opacity-0 group-hover:opacity-100 transition duration-500">
-        <p class="text-white text-xl font-semibold">Bitterleaf Soup</p>
-      </div>
-    </div>
-
-    <div class="relative group overflow-hidden rounded-2xl shadow-lg">
-      <img src="./assets/images/download.jpeg" 
-           alt="Goat Meat Pepper Soup"
-           class="w-full h-80 object-cover transform transition duration-700 group-hover:scale-110">
-      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center 
-                  opacity-0 group-hover:opacity-100 transition duration-500">
-        <p class="text-white text-xl font-semibold">Egusi with Pounded Yam</p>
-      </div>
-    </div>
-
-    <div class="relative group overflow-hidden rounded-2xl shadow-lg">
-      <img src="./assets/images/Pepper soup.jpeg" 
-           alt="Goat Meat Pepper Soup"
-           class="w-full h-80 object-cover transform transition duration-700 group-hover:scale-110">
-      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center 
-                  opacity-0 group-hover:opacity-100 transition duration-500">
-        <p class="text-white text-xl font-semibold">Goat Meat Pepper Soup</p>
-      </div>
-    </div>
-
-    <div class="relative group overflow-hidden rounded-2xl shadow-lg">
-      <img src="./assets/images/the Nigerian okpa.jpeg" 
-           alt="Goat Meat Pepper Soup"
-           class="w-full h-80 object-cover transform transition duration-700 group-hover:scale-110">
-      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center 
-                  opacity-0 group-hover:opacity-100 transition duration-500">
-        <p class="text-white text-xl font-semibold">Moi Moi</p>
-      </div>
-    </div>
-
-    
-</section>
-
-
-
-
-
-
-<footer class="w-full bg-[#5C3B1E] text-white py-10 px-6">
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
-    
-    <!-- Contact Info -->
-    <div>
-      <h2 class="text-xl md:text-2xl font-bold mb-4 text-[#F4C542]">Contact</h2>
-      <p class="mb-2">
-        Phone: 
-        <a href="tel:#" class="text-[#F4C542] hover:underline">
-          +234 000 000 000 00
-        </a>
-      </p>
-      <p>
-        Email: 
-        <a href="mailto:#" class="text-[#F4C542] hover:underline">
-          your mail@gmail.com
-        </a>
-      </p>
-    </div>
-
-    <div class="text-center">
-  <h2 class="text-xl md:text-2xl font-bold mb-4 text-[#F4C542]">Follow Us</h2>
-  <div class="flex justify-center gap-6">
-    <a href="https:#" target="_blank">
-      <img src="./assets/images/instagram.png" 
-           class="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300 hover:-translate-y-2 cursor-pointer" 
-           alt="Instagram">
-    </a>
-    <a href="https:/#" target="_blank">
-      <img src="./assets/images/facebook.png" 
-           class="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300 hover:-translate-y-2 cursor-pointer" 
-           alt="Facebook">
-    </a>
-    <a href="http://wa.me/#" target="_blank">
-      <img src="./assets/images/whatsapp.png" 
-           class="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300 hover:-translate-y-2 cursor-pointer" 
-           alt="WhatsApp">
-    </a>
-  </div>
-</div>
-
-
-    <!-- Quick Links -->
-    <div>
-      <h2 class="text-xl md:text-2xl font-bold mb-4 text-[#F4C542]">Quick Links</h2>
-      <ul class="space-y-2">
-        <li><a href="index.html#faq" class="hover:text-[#F4C542] transition">FAQ</a></li>
-        <li><a href="index.html#contact" class="hover:text-[#F4C542] transition">Contact</a></li>
-        <li><a href="index.html#home" class="hover:text-[#F4C542] transition">Home</a></li>
-      <li><a href="index.html#about-us" class="hover:text-[#F4C542] transition">About Us</a></li>
-      <li><a href="./menu.html" class="hover:text-[#F4C542] transition">Menu</a></li>
-      <li><a href="./gallery.html" class="hover:text-[#F4C542] transition">Gallery</a></li>
-      <li><a href="index.html#testimonials" class="hover:text-[#F4C542] transition">Testimonials</a></li>
-      <li><a href="https://maps.google.com/?q=123+Main+Street,+Lagos" class="hover:text-[#F4C542] transition">Location</a></li>
+      <!-- Menu Items -->
+      <ul class="flex-1 px-6 py-8 space-y-2">
+        <li><a href="./index.html" class="block text-white font-semibold text-lg py-3 px-4 rounded-lg hover:bg-white/10 smooth-transition">Home</a></li>
+        <li><a href="./index.html #about-us" class="block text-white font-semibold text-lg py-3 px-4 rounded-lg hover:bg-white/10 smooth-transition">About Us</a></li>
+        <li><a href="./menu.html" class="block text-white font-semibold text-lg py-3 px-4 rounded-lg hover:bg-white/10 smooth-transition">Menu</a></li>
+        <li><a href="./gallery.html" class="block text-white font-semibold text-lg py-3 px-4 rounded-lg hover:bg-white/10 smooth-transition">Gallery</a></li>
+        <li><a href="https://maps.google.com/?q=123+Main+Street,+Lagos" class="block text-white font-semibold text-lg py-3 px-4 rounded-lg hover:bg-white/10 smooth-transition">Location</a></li>
       </ul>
     </div>
+  </nav>
+
+  <!-- Cart Dropdown -->
+  <div id="cart" class="fixed top-24 right-4 lg:right-8 w-full max-w-md z-40 hidden">
+    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden cart-slide-in">
+      <!-- Cart Header -->
+      <div class="bg-gradient-to-r from-[#5C3B1E] to-[#6d4726] px-6 py-4 flex justify-between items-center">
+        <h2 class="font-bold text-xl text-white flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          Your Cart
+        </h2>
+        <button id="close-cart" class="text-white hover:text-[#F4C542] smooth-transition text-2xl font-bold">&times;</button>
+      </div>
+
+      <!-- Cart Items -->
+      <div class="p-6">
+        <ul id="cart-items" class="space-y-3 mb-4 max-h-80 overflow-y-auto"></ul>
+        
+        <!-- Empty Cart Message -->
+        <div id="empty-cart-msg" class="text-center py-12 hidden">
+          <svg class="w-20 h-20 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          <p class="text-gray-500 font-medium">Your cart is empty</p>
+          <p class="text-gray-400 text-sm mt-2">Add some delicious items to get started!</p>
+        </div>
+
+        <!-- Cart Total -->
+        <div class="border-t pt-4 mt-4">
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-gray-700 font-semibold text-lg">Total:</span>
+            <span id="cart-total" class="text-[#5C3B1E] font-bold text-2xl">$0.00</span>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="space-y-3">
+            <a id="checkout-btn" href="#" target="_blank"
+               class="block w-full text-center bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl font-semibold smooth-transition shadow-md hover:shadow-lg flex items-center justify-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+              </svg>
+              Checkout with WhatsApp
+            </a>
+            
+            <button id="clear-cart" class="w-full bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-xl font-semibold smooth-transition shadow-md hover:shadow-lg">
+              Clear Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- Bottom Logo + Copyright -->
-  <div class="mt-10 text-center">
-    <img 
-      class="w-28 h-28 md:w-40 md:h-40 mx-auto mb-4" 
-      src="./assets/images/logo_2-removebg-preview.png" 
-      alt="Logo"
-    >
-    <p class="text-sm md:text-base">&copy; 2025 business name. All rights reserved.</p>
+
+<section id="gallery-section-main" class="pb-16 pt-32 px-4 md:px-12">
+    <div class="container mx-auto max-w-7xl">
+      
+      <!-- Section Header -->
+      <div class="gallery-header text-center mb-16">
+        <span class="gallery-badge inline-block px-4 py-2 bg-[#C8102E] text-white rounded-full text-sm font-semibold mb-4">
+          🍽️ Visual Feast
+        </span>
+        <h2 class="text-4xl md:text-5xl font-bold text-[#5C3B1E] mb-4">
+          Our Food <span class="text-[#C8102E]">Gallery</span>
+        </h2>
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto mb-8">
+          Feast your eyes on our mouthwatering collection of authentic Nigerian dishes, prepared with passion and tradition.
+        </p>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+          <button class="gallery-filter-btn active px-6 py-3 rounded-full bg-white text-gray-700 font-semibold shadow-lg hover:shadow-xl relative" data-filter="all">
+            All Dishes
+          </button>
+          <button class="gallery-filter-btn px-6 py-3 rounded-full bg-white text-gray-700 font-semibold shadow-lg hover:shadow-xl relative" data-filter="soup">
+            Soups
+          </button>
+          <button class="gallery-filter-btn px-6 py-3 rounded-full bg-white text-gray-700 font-semibold shadow-lg hover:shadow-xl relative" data-filter="swallow">
+            Swallows
+          </button>
+          <button class="gallery-filter-btn px-6 py-3 rounded-full bg-white text-gray-700 font-semibold shadow-lg hover:shadow-xl relative" data-filter="specialty">
+            Specialties
+          </button>
+        </div>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-grid-main">
+        
+        <!-- Gallery Item 1 -->
+        <div class="gallery-item" data-category="soup">
+          <div class="gallery-card cursor-pointer" onclick="openGalleryLightbox(0)">
+            <img src="./assets/images/Afang soup.jpeg" 
+                 alt="Efo Riro with Pounded Yam"
+                 class="gallery-image w-full h-80 object-cover">
+            <div class="gallery-overlay">
+              <div class="gallery-icon bg-white/20 backdrop-blur-sm p-4 rounded-full mb-4">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                </svg>
+              </div>
+              <p class="gallery-title text-white text-2xl font-bold text-center drop-shadow-lg">
+                Efo Riro with Pounded Yam
+              </p>
+              <button class="gallery-view-btn mt-4 bg-[#F4C542] text-[#5C3B1E] px-6 py-2 rounded-full font-semibold hover:bg-[#e6b830]">
+                View Larger
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 2 -->
+        <div class="gallery-item" data-category="specialty">
+          <div class="gallery-card cursor-pointer" onclick="openGalleryLightbox(1)">
+            <img src="./assets/images/African food.jpeg" 
+                 alt="Pepper Sauce with Snail"
+                 class="gallery-image w-full h-80 object-cover">
+            <div class="gallery-overlay">
+              <div class="gallery-icon bg-white/20 backdrop-blur-sm p-4 rounded-full mb-4">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                </svg>
+              </div>
+              <p class="gallery-title text-white text-2xl font-bold text-center drop-shadow-lg">
+                Pepper Sauce with Snail
+              </p>
+              <button class="gallery-view-btn mt-4 bg-[#F4C542] text-[#5C3B1E] px-6 py-2 rounded-full font-semibold hover:bg-[#e6b830]">
+                View Larger
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 3 -->
+        <div class="gallery-item" data-category="soup">
+          <div class="gallery-card cursor-pointer" onclick="openGalleryLightbox(2)">
+            <img src="./assets/images/Authentic Nigerian Edikang Ikong Soup Recipe _ Hearty & Flavorful Nigerian Soup.jpg" 
+                 alt="Efo Riro with Eba"
+                 class="gallery-image w-full h-80 object-cover">
+            <div class="gallery-overlay">
+              <div class="gallery-icon bg-white/20 backdrop-blur-sm p-4 rounded-full mb-4">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                </svg>
+              </div>
+              <p class="gallery-title text-white text-2xl font-bold text-center drop-shadow-lg">
+                Efo Riro with Eba
+              </p>
+              <button class="gallery-view-btn mt-4 bg-[#F4C542] text-[#5C3B1E] px-6 py-2 rounded-full font-semibold hover:bg-[#e6b830]">
+                View Larger
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 4 -->
+        <div class="gallery-item" data-category="soup">
+          <div class="gallery-card cursor-pointer" onclick="openGalleryLightbox(3)">
+            <img src="./assets/images/bee_kitchen_1 on Instagram_ After detoxing we eat Fufu with Chicken Light Soup 😂 I’m so annoyed I don’t have okro 😭 What’s everyone having for lunch_ Ps_ Happy Eid….jpeg" 
+                 alt="Plain Pepper Soup with Chicken"
+                 class="gallery-image w-full h-80 object-cover">
+            <div class="gallery-overlay">
+              <div class="gallery-icon bg-white/20 backdrop-blur-sm p-4 rounded-full mb-4">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                </svg>
+              </div>
+              <p class="gallery-title text-white text-2xl font-bold text-center drop-shadow-lg">
+                Pepper Soup with Chicken
+              </p>
+              <button class="gallery-view-btn mt-4 bg-[#F4C542] text-[#5C3B1E] px-6 py-2 rounded-full font-semibold hover:bg-[#e6b830]">
+                View Larger
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 5 -->
+        <div class="gallery-item" data-category="soup">
+          <div class="gallery-card cursor-pointer" onclick="openGalleryLightbox(4)">
+            <img src="./assets/images/dawnload 4.jpeg" 
+                 alt="African Spinach (Ewedu)"
+                 class="gallery-image w-full h-80 object-cover">
+            <div class="gallery-overlay">
+              <div class="gallery-icon bg-white/20 backdrop-blur-sm p-4 rounded-full mb-4">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                </svg>
+              </div>
+              <p class="gallery-title text-white text-2xl font-bold text-center drop-shadow-lg">
+                African Spinach (Ewedu)
+              </p>
+              <button class="gallery-view-btn mt-4 bg-[#F4C542] text-[#5C3B1E] px-6 py-2 rounded-full font-semibold hover:bg-[#e6b830]">
+                View Larger
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 6 -->
+        <div class="gallery-item" data-category="soup">
+          <div class="gallery-card cursor-pointer" onclick="openGalleryLightbox(5)">
+            <img src="./assets/images/Efo riro.jpeg" 
+                 alt="Bitterleaf Soup"
+                 class="gallery-image w-full h-80 object-cover">
+            <div class="gallery-overlay">
+              <div class="gallery-icon bg-white/20 backdrop-blur-sm p-4 rounded-full mb-4">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                </svg>
+              </div>
+              <p class="gallery-title text-white text-2xl font-bold text-center drop-shadow-lg">
+                Bitterleaf Soup
+              </p>
+              <button class="gallery-view-btn mt-4 bg-[#F4C542] text-[#5C3B1E] px-6 py-2 rounded-full font-semibold hover:bg-[#e6b830]">
+                View Larger
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 7 -->
+        <div class="gallery-item" data-category="swallow">
+          <div class="gallery-card cursor-pointer" onclick="openGalleryLightbox(6)">
+            <img src="./assets/images/download.jpeg" 
+                 alt="Egusi with Pounded Yam"
+                 class="gallery-image w-full h-80 object-cover">
+            <div class="gallery-overlay">
+              <div class="gallery-icon bg-white/20 backdrop-blur-sm p-4 rounded-full mb-4">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                </svg>
+              </div>
+              <p class="gallery-title text-white text-2xl font-bold text-center drop-shadow-lg">
+                Egusi with Pounded Yam
+              </p>
+              <button class="gallery-view-btn mt-4 bg-[#F4C542] text-[#5C3B1E] px-6 py-2 rounded-full font-semibold hover:bg-[#e6b830]">
+                View Larger
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 8 -->
+        <div class="gallery-item" data-category="soup">
+          <div class="gallery-card cursor-pointer" onclick="openGalleryLightbox(7)">
+            <img src="./assets/images/Pepper soup.jpeg" 
+                 alt="Goat Meat Pepper Soup"
+                 class="gallery-image w-full h-80 object-cover">
+            <div class="gallery-overlay">
+              <div class="gallery-icon bg-white/20 backdrop-blur-sm p-4 rounded-full mb-4">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                </svg>
+              </div>
+              <p class="gallery-title text-white text-2xl font-bold text-center drop-shadow-lg">
+                Goat Meat Pepper Soup
+              </p>
+              <button class="gallery-view-btn mt-4 bg-[#F4C542] text-[#5C3B1E] px-6 py-2 rounded-full font-semibold hover:bg-[#e6b830]">
+                View Larger
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 9 -->
+        <div class="gallery-item" data-category="specialty">
+          <div class="gallery-card cursor-pointer" onclick="openGalleryLightbox(8)">
+            <img src="./assets/images/the Nigerian okpa.jpeg" 
+                 alt="Moi Moi"
+                 class="gallery-image w-full h-80 object-cover">
+            <div class="gallery-overlay">
+              <div class="gallery-icon bg-white/20 backdrop-blur-sm p-4 rounded-full mb-4">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                </svg>
+              </div>
+              <p class="gallery-title text-white text-2xl font-bold text-center drop-shadow-lg">
+                Moi Moi
+              </p>
+              <button class="gallery-view-btn mt-4 bg-[#F4C542] text-[#5C3B1E] px-6 py-2 rounded-full font-semibold hover:bg-[#e6b830]">
+                View Larger
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Call to Action -->
+      <div class="text-center mt-16">
+        <p class="text-gray-600 text-lg mb-6">
+          Craving what you see? Order now and taste the tradition!
+        </p>
+        <a href="#menu" class="inline-flex items-center gap-3 bg-gradient-to-r from-[#C8102E] to-[#a00d26] text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+          Order Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="gallery-lightbox" class="gallery-lightbox" onclick="closeGalleryLightbox()">
+    <button class="absolute top-6 right-6 text-white hover:text-[#F4C542] transition-colors z-10" onclick="closeGalleryLightbox()">
+      <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <img id="gallery-lightbox-img" src="" alt="" class="gallery-lightbox-image">
+    <p id="gallery-lightbox-title" class="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-white text-2xl font-bold text-center"></p>
   </div>
-</footer>
+
+
+
+
+
+
+
+<footer class="footer-gradient-bg text-white py-16 px-6 relative">
+    <div class="max-w-7xl mx-auto relative z-10">
+      
+      <!-- Scroll to Top Button -->
+      <div class="flex justify-center mb-12">
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
+                class="footer-scroll-top bg-[#F4C542] text-[#5C3B1E] px-6 py-3 rounded-full font-bold flex items-center gap-2 hover:bg-[#e6b830] shadow-lg">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+          </svg>
+          Back to Top
+        </button>
+      </div>
+
+      <!-- Main Footer Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        
+        <!-- About Section -->
+        <div class="footer-section text-center md:text-left">
+          <div class="flex justify-center md:justify-start mb-6">
+            <div class="bg-white rounded-full p-3 shadow-xl footer-logo">
+              <img src="./assets/images/food logo.png" 
+                   alt="FoodDash Logo" 
+                   class="w-16 h-16 object-contain">
+            </div>
+          </div>
+          <h2 class="text-2xl font-bold mb-4 text-[#F4C542]">FoodDash</h2>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            Delivering authentic Nigerian cuisine with love, tradition, and the finest ingredients. Your favorite meals, just a click away!
+          </p>
+          <div class="flex justify-center md:justify-start gap-4 mt-6">
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-[#F4C542]" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-sm text-gray-300">Fresh & Authentic</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-section text-center md:text-left">
+          <h3 class="text-xl font-bold mb-6 text-[#F4C542] flex items-center justify-center md:justify-start gap-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+            Quick Links
+          </h3>
+          <ul class="space-y-3">
+            <li><a href="index.html#home" class="footer-link text-gray-300">Home</a></li>
+            <li><a href="index.html#about-us" class="footer-link text-gray-300">About Us</a></li>
+            <li><a href="./menu.html" class="footer-link text-gray-300">Menu</a></li>
+            <li><a href="./gallery.html" class="footer-link text-gray-300">Gallery</a></li>
+            <li><a href="index.html#testimonials" class="footer-link text-gray-300">Testimonials</a></li>
+            <li><a href="index.html#faq" class="footer-link text-gray-300">FAQ</a></li>
+            <li><a href="index.html#contact" class="footer-link text-gray-300">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-section text-center md:text-left">
+          <h3 class="text-xl font-bold mb-6 text-[#F4C542] flex items-center justify-center md:justify-start gap-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            Contact Us
+          </h3>
+          <div class="space-y-4">
+            <a href="tel:+2348000000000" class="footer-contact-item flex items-center justify-center md:justify-start gap-3 text-gray-300">
+              <div class="bg-[#F4C542] p-2 rounded-lg">
+                <svg class="w-5 h-5 text-[#5C3B1E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                </svg>
+              </div>
+              <span>+234 800 000 0000</span>
+            </a>
+
+            <a href="mailto:hello@fooddash.com" class="footer-contact-item flex items-center justify-center md:justify-start gap-3 text-gray-300">
+              <div class="bg-[#F4C542] p-2 rounded-lg">
+                <svg class="w-5 h-5 text-[#5C3B1E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <span>hello@fooddash.com</span>
+            </a>
+
+            <a href="https://maps.google.com/?q=123+Main+Street,+Lagos" target="_blank" rel="noopener noreferrer" 
+               class="footer-contact-item flex items-center justify-center md:justify-start gap-3 text-gray-300">
+              <div class="bg-[#F4C542] p-2 rounded-lg">
+                <svg class="w-5 h-5 text-[#5C3B1E]" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/>
+                </svg>
+              </div>
+              <span>123 Main Street, Lagos</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Newsletter & Social -->
+        <div class="footer-section text-center md:text-left">
+          <h3 class="text-xl font-bold mb-6 text-[#F4C542] flex items-center justify-center md:justify-start gap-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+            </svg>
+            Stay Updated
+          </h3>
+          <p class="text-gray-300 text-sm mb-4">
+            Subscribe for exclusive deals and new menu updates!
+          </p>
+          <form class="mb-6" onsubmit="handleNewsletterSubmit(event)">
+            <div class="flex flex-col sm:flex-row gap-2">
+              <input type="email" 
+                     id="footer-newsletter-email"
+                     placeholder="Your email address" 
+                     required
+                     class="footer-newsletter-input flex-1 px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:bg-white/20">
+              <button type="submit" 
+                      class="footer-newsletter-btn bg-[#F4C542] text-[#5C3B1E] px-6 py-3 rounded-lg font-bold hover:bg-[#e6b830] relative">
+                Subscribe
+              </button>
+            </div>
+          </form>
+
+          <h4 class="text-lg font-semibold mb-4 text-[#F4C542]">Follow Us</h4>
+          <div class="flex justify-center md:justify-start gap-4">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+               class="footer-social-icon bg-white/10 p-3 rounded-full hover:bg-[#F4C542] group">
+              <svg class="w-6 h-6 text-white group-hover:text-[#5C3B1E]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
+               class="footer-social-icon bg-white/10 p-3 rounded-full hover:bg-[#F4C542] group">
+              <svg class="w-6 h-6 text-white group-hover:text-[#5C3B1E]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+            
+            <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer"
+               class="footer-social-icon bg-white/10 p-3 rounded-full hover:bg-[#F4C542] group">
+              <svg class="w-6 h-6 text-white group-hover:text-[#5C3B1E]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+              </svg>
+            </a>
+
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
+               class="footer-social-icon bg-white/10 p-3 rounded-full hover:bg-[#F4C542] group">
+              <svg class="w-6 h-6 text-white group-hover:text-[#5C3B1E]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="footer-divider mb-8"></div>
+
+      <!-- Bottom Bar -->
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-gray-400 text-sm">
+        <p>&copy; 2025 <span class="text-[#F4C542] font-semibold">FoodDash</span>. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-[#F4C542] transition">Privacy Policy</a>
+          <a href="#" class="hover:text-[#F4C542] transition">Terms of Service</a>
+          <a href="#" class="hover:text-[#F4C542] transition">Cookie Policy</a>
+        </div>
+      </div>
+
+      <!-- Made with love badge -->
+      <div class="text-center mt-8 text-gray-400 text-sm">
+        <p class="flex items-center justify-center gap-2">
+          Made with 
+          <svg class="w-4 h-4 text-red-500 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+          </svg>
+          in Nigeria 🇳🇬
+        </p>
+      </div>
+    </div>
+  </footer>
 <script src="./script.js"></script>
 </body>
 </html>

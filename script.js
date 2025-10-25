@@ -591,3 +591,113 @@ updateCart();
       // Reset form
       emailInput.value = '';
     }
+
+
+
+
+
+
+
+
+
+
+
+    
+    const galleryImages = [
+      { src: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=1200&h=800&fit=crop', title: 'Efo Riro with Pounded Yam' },
+      { src: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&h=800&fit=crop', title: 'Pepper Sauce with Snail' },
+      { src: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=1200&h=800&fit=crop', title: 'Efo Riro with Eba' },
+      { src: 'https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?w=1200&h=800&fit=crop', title: 'Pepper Soup with Chicken' },
+      { src: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=1200&h=800&fit=crop', title: 'African Spinach (Ewedu)' },
+      { src: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=1200&h=800&fit=crop', title: 'Bitterleaf Soup' },
+      { src: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&h=800&fit=crop', title: 'Egusi with Pounded Yam' },
+      { src: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=1200&h=800&fit=crop', title: 'Goat Meat Pepper Soup' },
+      { src: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=1200&h=800&fit=crop', title: 'Moi Moi' }
+    ];
+
+    let currentLightboxIndex = 0;
+
+    // Lightbox open function
+    function openGalleryLightbox(index) {
+      currentLightboxIndex = index;
+      const lightbox = document.getElementById('gallery-lightbox');
+      const img = document.getElementById('gallery-lightbox-img');
+      const title = document.getElementById('gallery-lightbox-title');
+      
+      img.src = galleryImages[index].src;
+      title.textContent = galleryImages[index].title;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Lightbox close function
+    function closeGalleryLightbox() {
+      const lightbox = document.getElementById('gallery-lightbox');
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Wait for DOM to load
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      // Filter functionality
+      const filterBtns = document.querySelectorAll('.gallery-filter-btn');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+
+      filterBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const filter = btn.getAttribute('data-filter');
+          
+          // Update active button
+          filterBtns.forEach(function(b) {
+            b.classList.remove('active');
+          });
+          btn.classList.add('active');
+          
+          // Filter items
+          galleryItems.forEach(function(item) {
+            const category = item.getAttribute('data-category');
+            
+            if (filter === 'all' || category === filter) {
+              item.style.display = 'block';
+              // Reset animation
+              item.style.animation = 'none';
+              setTimeout(function() {
+                item.style.animation = '';
+              }, 10);
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Close lightbox on Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeGalleryLightbox();
+        }
+      });
+
+      // Prevent lightbox from closing when clicking on image
+      const lightboxImg = document.getElementById('gallery-lightbox-img');
+      if (lightboxImg) {
+        lightboxImg.addEventListener('click', function(e) {
+          e.stopPropagation();
+        });
+      }
+
+      // Smooth scroll for Order Now button
+      const orderBtn = document.querySelector('a[href="#menu"]');
+      if (orderBtn) {
+        orderBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const menuSection = document.querySelector('#menu');
+          if (menuSection) {
+            menuSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      }
+
+    });
+  
