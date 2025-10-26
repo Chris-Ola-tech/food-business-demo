@@ -701,3 +701,94 @@ updateCart();
 
     });
   
+
+
+
+
+
+
+
+
+
+    // Lightbox functionality
+function openGalleryLightbox(index) {
+  // Create lightbox overlay
+  const lightbox = document.createElement('div');
+  lightbox.id = 'gallery-lightbox';
+  lightbox.className = 'fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4';
+  lightbox.style.animation = 'fadeIn 0.3s ease-in-out';
+  
+  // Get the clicked image details
+  const galleryCard = event.currentTarget;
+  const img = galleryCard.querySelector('.gallery-image');
+  const title = galleryCard.querySelector('.gallery-title');
+  
+  // Create lightbox content
+  lightbox.innerHTML = `
+    <div class="relative max-w-5xl w-full">
+      <!-- Close button -->
+      <button onclick="closeGalleryLightbox()" 
+              class="absolute -top-12 right-0 text-white hover:text-[#F4C542] transition-colors">
+        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      
+      <!-- Image -->
+      <img src="${img.src}" 
+           alt="${img.alt}" 
+           class="w-full h-auto max-h-[80vh] object-contain rounded-lg shadow-2xl">
+      
+      <!-- Title -->
+      <p class="text-white text-2xl font-bold text-center mt-6 drop-shadow-lg">
+        ${title.textContent}
+      </p>
+    </div>
+  `;
+  
+  // Close on overlay click
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) {
+      closeGalleryLightbox();
+    }
+  });
+  
+  // Close on Escape key
+  document.addEventListener('keydown', handleEscapeKey);
+  
+  // Add to body
+  document.body.appendChild(lightbox);
+  document.body.style.overflow = 'hidden';
+}
+
+function closeGalleryLightbox() {
+  const lightbox = document.getElementById('gallery-lightbox');
+  if (lightbox) {
+    lightbox.style.animation = 'fadeOut 0.3s ease-in-out';
+    setTimeout(() => {
+      lightbox.remove();
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', handleEscapeKey);
+    }, 300);
+  }
+}
+
+function handleEscapeKey(e) {
+  if (e.key === 'Escape') {
+    closeGalleryLightbox();
+  }
+}
+
+// Add fade animations
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+`;
+document.head.appendChild(style);
