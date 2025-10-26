@@ -216,8 +216,8 @@ updateCart();
 
   // Typing Effect
   const phrases = [
-    "Bringing Flavor Home",
-    "Authentic Nigerian Dishes",
+    "Home Flavour",
+    "Authentic Dishes",
     "Fast & Fresh Delivery",
     "Taste the Tradition"
   ];
