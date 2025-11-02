@@ -115,7 +115,7 @@ let cart = [];
                   <span class="font-semibold text-sm w-6 text-center">${item.qty}</span>
                   <button class="qty-increase text-gray-600 hover:text-[#5C3B1E] font-bold" data-index="${index}">+</button>
                 </div>
-                <span class="text-[#5C3B1E] font-bold">${(item.price * item.qty).toFixed(2)}</span>
+                <span class="text-[#5C3B1E] font-bold">₦ ${(item.price * item.qty).toFixed(2)}</span>
               </div>
             </div>
             <button class="remove-btn text-red-500 hover:text-red-700 ml-4 smooth-transition" data-index="${index}">
@@ -129,7 +129,7 @@ let cart = [];
         });
       }
 
-      cartTotal.textContent = `${total.toFixed(2)}`;
+      cartTotal.textContent = `₦ ${total.toFixed(2)}`;
       cartCount.textContent = itemCount;
 
       // Update WhatsApp checkout link
